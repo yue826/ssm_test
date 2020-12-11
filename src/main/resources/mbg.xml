@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <context id="DB2Tables" targetRuntime="MyBatis3">
+        <!--是否生成注释和实体类 -->
+        <commentGenerator>
+            <property name="supperAllComments" value="true"/>
+        </commentGenerator>
+<!--    数据库连接信息    -->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://localhost:3306/test"
+                        userId="root"
+                        password="root">
+
+        </jdbcConnection>
+<!-- 是否把数据库中的DECIMAL和NUMERIC类型转换为Java中的java.math.BigDecimal类型  -->
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false" />
+        </javaTypeResolver>
+        <!-- 指定javaBean生成的位置 -->
+        <javaModelGenerator targetPackage="com.bean" targetProject=".\src\main\java">
+            <!-- enableSubPackages:是否让schema作为包的后缀 -->
+            <property name="enableSubPackages" value="true" />
+            <property name="trimStrings" value="true" />
+        </javaModelGenerator>
+        <!--指定sql映射文件生成的位置 -->
+        <sqlMapGenerator targetPackage="mappers" targetProject=".\src\main\resources">
+            <property name="enableSubPackages" value="true" />
+        </sqlMapGenerator>
+        <!-- 生成动态代理的接口  -->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.dao" targetProject=".\src\main\java">
+            <property name="enableSubPackages" value="true" />
+        </javaClientGenerator>
+        <!-- 指定数据库表 domainObjectName为给实体类起名字 -->
+        <table tableName="ms_admin" domainObjectName="user">
+
+        </table>
+    </context>
+</generatorConfiguration>
